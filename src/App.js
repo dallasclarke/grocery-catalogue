@@ -75,7 +75,7 @@ class App extends Component {
     this.setState({
       items: [...this.state.items, newObj],
     });
-    console.log(this.addName);
+    // console.log(this.addName);
     console.log(this.state);
   };
 
