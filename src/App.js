@@ -62,7 +62,10 @@ class App extends Component {
   onClickAdd = () => {
     console.log("hi");
     const newObj = {
-      name: this.addName.current.value, //using refs
+      name: this.addName.current.value,
+      price:this.addPrice.current.value,
+      description:this.addPrice.current.value,
+      image:this.addImage.current.value //using refs
       // orderAmount: this.addOrderAmount.current.value,
       // orderTime: this.addOrderTime.current.value,
       // restaurantName: this.addRestaurantName.current.value,
