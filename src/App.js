@@ -11,8 +11,8 @@ import ItemContext from "./context/ItemContext";
 import "./App.css";
 import { AddControls } from "./components/Prem-Components/AddControls";
 // import EditControls from "./components/Prem-Components/EditControls";
-// import NavBar from "./components/Dallas-Components/Search/NavBar";
-// import ItemDisplay from "./components/Dallas-Components/ItemDisplay/ItemDisplay";
+import NavBar from "./components/Dallas-Components/Search/NavBar";
+import ItemDisplay from "./components/Dallas-Components/ItemDisplay/ItemDisplay";
 
 class App extends Component {
   constructor(props) {
@@ -34,19 +34,19 @@ class App extends Component {
         {
           name: "Green Apples",
           price: "$4.49",
-          decription: "Bag of Apples",
+          description: "Bag of Apples",
           img: apples,
         },
         {
           name: "Peanut Butter",
           price: "$3.50",
-          decription: "Jar of Peanut Butter",
+          description: "Jar of Peanut Butter",
           img: peanutButter,
         },
         {
           name: "Steak",
           price: "$15.96",
-          decription: "14oz NY Strip",
+          description: "14oz NY Strip",
           img: steak,
         },
       ],
@@ -79,11 +79,23 @@ class App extends Component {
     console.log(this.state);
   };
 
+  searchInputHandler = (e) => {
+    this.setState({
+      searchQuery: e.target.value
+    })
+  }
+
+  filterItems = () => {
+    const { searchQuery, items } = this.state;
+
+    return items.filter((item) => item.name.toLowerCase().startsWith(searchQuery.toLowerCase()))
+  }
+
   render() {
     return (
       <div className="App">
-        {/* <NavBar /> */}
-        {/* <ItemDisplay  />  */}
+        <NavBar searchInput={this.searchInputHandler} />
+        <ItemDisplay items={this.filterItems()} /> 
         {/* <AddControls item={this.state.items} myNameRef={this.addName} onClickAdd={this.onClickAdd}/> */}
         {/* <div>add</div> */}
         {/* <EditControls /> */}

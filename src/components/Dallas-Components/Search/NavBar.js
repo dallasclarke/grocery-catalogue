@@ -1,13 +1,12 @@
-// import React, { Component } from "react"
+import React from "react"
 
 
-// function NavBar(props) {
-//     return (
-//         <div>
-//             <h1>Test</h1>
-//             <p></p>
-//         </div>
-//     )
-// }
+function NavBar(props) {
+    return (
+        <div>
+            <input type="text" placeholder="Search Items" onChange={props.searchInput} />
+        </div>
+    )
+}
 
-// export default NavBar;
+export default NavBar;
