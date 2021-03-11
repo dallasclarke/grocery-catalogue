@@ -4,14 +4,12 @@ import "./style.css";
 import ItemContext from "../../context/ItemContext";
 
 export const AddControls = (props) => {
-  //   console.log(props);
   const [modalShow, setModalShow] = useState(false);
 
   return (
     <div>
       <ItemContext.Consumer>
         {(context) => {
-          console.log(context);
           return (
             <Modal isOpen={modalShow} className="generic">
               <div
@@ -33,12 +31,14 @@ export const AddControls = (props) => {
                     ref={context.nameRef}
                     type="text"
                   ></input>
+
                   <label className="l2 grid-item">price</label>
                   <input
                     className="i2 grid-item"
                     ref={context.priceRef}
                     type="text"
                   ></input>
+
                   <label className="l3 grid-item">description</label>
                   <textarea
                     className="i3 grid-item"
@@ -46,22 +46,25 @@ export const AddControls = (props) => {
                     type="text"
                     style={{ resize: "none" }}
                   ></textarea>
+
                   <label className="l4 grid-item">image link</label>
                   <input
                     className="i4 grid-item"
                     ref={context.imageRef}
-                    type="text"
                   ></input>
-                  <button
+
+                </div>
+                 
+                 <div className='btn'>
+                      <button
                     className="submit grid-item"
                     onClick={context.onClickAdd}
-                    style={{ display: "flex", justifyContent: "center" }}
-                  >
+                    // style={{ display: "flex", justifyContent: "center" }}
+                    >
                     submit
                   </button>
-                </div>
+                    </div>
               </div>
-              {/* </div> */}
             </Modal>
           );
         }}

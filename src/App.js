@@ -10,7 +10,7 @@ import ItemContext from "./context/ItemContext";
 
 import "./App.css";
 import { AddControls } from "./components/Prem-Components/AddControls";
-// import EditControls from "./components/Prem-Components/EditControls";
+
 import NavBar from "./components/Dallas-Components/Search/NavBar";
 import ItemDisplay from "./components/Dallas-Components/ItemDisplay/ItemDisplay";
 
@@ -24,30 +24,35 @@ class App extends Component {
           price: "$2.99",
           description: "Bundle of Bananas",
           img: bananas,
+          id: 1,
         },
         {
           name: "Bread",
           price: "$3.99",
           description: "Loaf of Bread",
           img: bread,
+          id: 2,
         },
         {
           name: "Green Apples",
           price: "$4.49",
           description: "Bag of Apples",
           img: apples,
+          id: 3,
         },
         {
           name: "Peanut Butter",
           price: "$3.50",
           description: "Jar of Peanut Butter",
           img: peanutButter,
+          id: 4,
         },
         {
           name: "Steak",
           price: "$15.96",
           description: "14oz NY Strip",
           img: steak,
+          id: 5,
         },
       ],
       searchQuery: "",
@@ -56,60 +61,78 @@ class App extends Component {
     this.addName = React.createRef();
     this.addPrice = React.createRef();
     this.addDescription = React.createRef();
-    this.addImage = React.createRef();
+    this.addImg = React.createRef();
   }
 
   onClickAdd = () => {
-    console.log("hi");
     const newObj = {
       name: this.addName.current.value,
-      price:this.addPrice.current.value,
-      description:this.addPrice.current.value,
-      image:this.addImage.current.value //using refs
-      // orderAmount: this.addOrderAmount.current.value,
-      // orderTime: this.addOrderTime.current.value,
-      // restaurantName: this.addRestaurantName.current.value,
-      // id: this.state.restaurant.length + 1,
+      price: this.addPrice.current.value,
+      description: this.addDescription.current.value,
+      img: this.addImg.current.value,
+      id: this.state.items.length + 1,
     };
 
     this.setState({
+      ...this.state,
       items: [...this.state.items, newObj],
     });
-    // console.log(this.addName);
+
     console.log(this.state);
+  };
+
+  onClickEdit = (id) => {
+    let newArr = this.state.items.map((item) => {
+      if (item.id === id) {
+        item.name = this.addName.current.value;
+        item.price = this.addPrice.current.value;
+        item.description = this.addDescription.current.value;
+        item.img = this.addImg.current.value;
+        item.id = id;
+      }
+
+      return item;
+    });
+
+    this.setState({
+      ...this.state,
+      items: newArr,
+    });
   };
 
   searchInputHandler = (e) => {
     this.setState({
-      searchQuery: e.target.value
-    })
-  }
+      searchQuery: e.target.value,
+    });
+  };
 
   filterItems = () => {
     const { searchQuery, items } = this.state;
 
-    return items.filter((item) => item.name.toLowerCase().startsWith(searchQuery.toLowerCase()))
-  }
+    return items.filter((item) =>
+      item.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+    );
+  };
 
   render() {
     return (
       <div className="App">
         <NavBar searchInput={this.searchInputHandler} />
-        <ItemDisplay items={this.filterItems()} /> 
-        {/* <AddControls item={this.state.items} myNameRef={this.addName} onClickAdd={this.onClickAdd}/> */}
-        {/* <div>add</div> */}
-        {/* <EditControls /> */}
+
         <div>
           <ItemContext.Provider
             value={{
               state: this.state,
               nameRef: this.addName,
               priceRef: this.addPrice,
-              descriptionRef: this.addPrice,
-              imageRef: this.addImage,
-              onClickAdd:this.onClickAdd
+              descriptionRef: this.addDescription,
+              imageRef: this.addImg,
+
+              onClickAdd: this.onClickAdd,
+              onClickEdit: this.onClickEdit,
             }}
           >
+            <ItemDisplay items={this.filterItems()} />
             <AddControls />
           </ItemContext.Provider>
         </div>
