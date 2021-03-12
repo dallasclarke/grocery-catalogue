@@ -66,7 +66,7 @@ export const EditControls = (props) => {
                 </div>
               </div>
             </Modal>
-            <button onClick={() => setModalShow(true)}>Edit</button>
+            <button className='editBtn' onClick={() => setModalShow(true)}>Edit</button>
           </div>
         );
       }}

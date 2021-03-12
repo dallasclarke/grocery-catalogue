@@ -69,7 +69,10 @@ export const AddControls = (props) => {
           );
         }}
       </ItemContext.Consumer>
-      <button onClick={() => setModalShow(true)}>add </button>
+      <div className='addBtn-container'>
+
+      <button className='addBtn' onClick={() => setModalShow(true)}>ADD ITEMS </button>
+      </div>
     </div>
   );
 };
