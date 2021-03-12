@@ -1,0 +1,68 @@
+.bar {
+  background: rgba(2, 2, 2, 0.822);
+  min-height: 5vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bar h2 {
+    font-family: "lobster";
+    color: white;
+    font-size: 25px;
+    margin-left: 20px;
+}
+
+.search {
+  margin: 10px 30px;
+  display: flex;
+}
+
+.search > h3 {
+    color: white;
+    font-family: "lobster";
+    font-size: 25px;
+    display: flex;
+    margin: 10px 15px;
+}
+
+.search > div {
+  display: inline-block;
+  position: relative;
+  filter: drop-shadow(0 1px #0091c2);
+}
+
+.search > div:after {
+  content: "";
+  background: white;
+  width: 4px;
+  height: 20px;
+  position: absolute;
+  top: 30px;
+  right: -2px;
+  transform: rotate(135deg);
+}
+
+.search input {
+  color: white;
+  font-size: 16px;
+  background: transparent;
+  width: 15px;
+  height: 15px;
+  padding: 10px;
+  border: solid 3px white;
+  outline: none;
+  border-radius: 35px;
+  transition: width 0.5s;
+}
+.search input::placeholder {
+  color: #efefef;
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+}
+.search input::focuse::placeholder {
+  opacity: 1;
+}
+.search input:focus,
+.search input:not(:placeholder-shown) {
+  width: 250px;
+}
