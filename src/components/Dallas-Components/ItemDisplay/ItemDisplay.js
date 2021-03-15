@@ -15,8 +15,9 @@ function ItemDisplay(props) {
   const displayItems = currentItem.map((item) => {
     return (
       <div className="items">
-        <li>{item.name}</li>
+        <h2>{item.name}</h2>
         <img src={item.img} />
+        <li id="price">{item.price}</li>
         <li>{item.description}</li>
         <EditControls data={item} />
       </div>
@@ -34,8 +35,8 @@ function ItemDisplay(props) {
 
   const renderPageNumber = pageNumbers.map((number) => {
     return (
-      <li key={number} id={number} onClick={handleClick}>
-        {number}
+      <li key={number} id={number} onClick={handleClick} className="page-num">
+        Page {number}
       </li>
     );
   });
@@ -43,8 +44,8 @@ function ItemDisplay(props) {
   return (
     <div>
       <div className="item-display">
-        <ul>{displayItems}</ul>
-        <ul>{renderPageNumber}</ul>
+        <ul className="card">{displayItems}</ul>
+        <ul className="pages">{renderPageNumber}</ul>
       </div>
     </div>
   );

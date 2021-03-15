@@ -1,12 +1,56 @@
-.items-display {
-    
+.item-display {
+    margin-top: 10rem;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
     
 }
 
 .items {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 15px;
     list-style-type: none;
+}
+
+#price {
+    font-family: "lobster";
+    font-size: 1.5rem;
+}
+
+.items h2 {
+    font-family: "Ubuntu", sans-serif;
+}
+
+.items li {
+    padding: 5px;
 }
 
 .items img {
     width: 250px;
+    height: 200px;
+}
+
+.pages {
+    list-style: none;
+    color: black;
+    font-weight: 700;
+    font-size: 18px;
+    display: flex;
+    font-family: "lobster";
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    /* margin-left: 45rem; */
+}
+
+.page-num {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
 }
